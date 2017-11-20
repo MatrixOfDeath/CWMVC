@@ -1,0 +1,54 @@
+<?php \Controllers\page::loadFragments("header");?>
+
+<section id="articles">
+    <main>
+    <h1>==Reste HappY Cerf Vert==</h1>
+
+    <table class='articles'>
+        <thead>
+        <th>#id</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Author</th>
+        <th>Last Edit</th>
+        <th>Actions</th>
+        </thead>
+
+
+        <?php foreach ($listArticles as $key=>$article): ?>
+        <tr class='rows'>
+            <td class="node_id"><span class="nid"><?php print $article->id; ?></span></td>
+            <td class="title"><span class="titre"><?php print $article->titre; ?></span><input class="inputTitre" type="text" placeholder="<?php  print $article->titre; ?>" value="<?php  print $article->titre; ?>" maxlength="30" hidden/></td>
+            <td class='input'><span class="content"><?php print $article->content; ?></span> <input class="inputContent" type="text" placeholder="<?php  print $article->content; ?>" value="<?php  print $article->content; ?>" maxlength="30" hidden/> </td>
+            <td class='author'><span class="authorName"><?php print $article->author; ?></span></td>
+            <td class='date'><span class="dateTime"><?php print date('d/m/Y',strtotime($article->last_edit)) ?></span></td>
+
+            <td class='action'>
+                <input type="hidden" class="id" value="<?php print $article->id; ?>">
+                <input class="buttonPut" type="submit" value="Edit">
+                <input class="buttonDelete" type="submit" value="Supprimer">
+            </td>
+        </tr>
+        <?php endforeach; ?>
+        <tr class="new">
+            <td class="node_id"><span class="nid"></span></td>
+            <td class="title"><span class="titre"></span><input class="inputTitre" type="text" placeholder="Saisire un titre" value="" maxlength="30" hidden/></td>
+            <td class='input'><span class="content"></span><input class="inputContent" type="text" placeholder="Saisir un texte" value="" maxlength="30" hidden/> </td>
+            <td class='author'><span class="authorName" hidden></span></td>
+            <td class='date'><span class="dateTime" hidden><?php print date('d/m/Y');?></span></td>
+
+            <td class='action'>
+                <input type="hidden" class="id" value="">
+                <input class="buttonPut" type="submit" value="Edit" hidden>
+                <input class="buttonDelete" type="submit" value="Supprimer" hidden>
+                <input class="buttonAdd" type="submit" value="Add">
+                <input class="buttonPost" type="submit" value="Valider" hidden>
+            </td>
+
+        </tr>
+    </table>
+    </main>
+</section>
+<?php \Controllers\Page::loadFragments("footer");?>
+
+

@@ -1,0 +1,28 @@
+<?php \Controllers\page::loadFragments("header");?>
+
+<section id="articles">
+    <main>
+    <h1>Listes des articles</h1>
+
+    <table class='articles'>
+        <thead>
+        <th>#id</th>
+        <th>Title</th>
+        <th>Content</th>
+        </thead>
+
+
+        <?php foreach ($listArticles as $key=>$article): ?>
+        <tr class='rows'>
+            <td class="node_id"><span class="nid"><?php print $article->id; ?></span></td>
+            <td class="title"> <span class="titre"><?php print $article->titre; ?></span><input class="inputTitre" type="text" placeholder="<?php  print $article->titre; ?>" value="" maxlength="30" hidden/></td>
+            <td class='input'><span class="content"><?php print $article->content; ?></span> <input class="inputContent" type="text" placeholder="<?php  print $article->content; ?>" value="" maxlength="30" hidden/> </td>
+        </tr>
+        <?php endforeach; ?>
+
+    </table>
+    </main>
+</section>
+<?php \Controllers\Page::loadFragments("footer");?>
+
+
